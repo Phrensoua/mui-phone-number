@@ -1,22 +1,22 @@
-# material-ui-phone-number
+# mui-phone-number
 Highly customizable phone input component with auto formatting. Based on the wonderful [react-phone-input-2](https://github.com/bl00mber/react-phone-input-2) package.
 
 It looks like this, but in Material Design:
 
 ![alt tag](https://media.giphy.com/media/l378A8qFNzgiuPUre/giphy.gif)
 
-Uses @material-ui/core/TextField for rendering the phone input
+Uses @mui/material/TextField for rendering the phone input
 
 ## Installation
 
 ```shell-script
-npm install material-ui-phone-number --save
+npm install mui-phone-number --save
 ```
 
 ## Usage
 
 ```jsx
-import MuiPhoneNumber from 'material-ui-phone-number';
+import MuiPhoneNumber from 'mui-phone-number';
 
 React.render(
   <MuiPhoneNumber defaultCountry={'us'} onChange={handleOnChange}/>,
@@ -115,7 +115,7 @@ function handleOnChange(value) {
   </tr>
 
   <tr>
-    <td colspan="4">See TextField API for possible values https://material-ui.com/api/text-field/</td>
+    <td colspan="4">See TextField API for possible values https://mui.com/api/text-field/</td>
   </tr>
 </table>
 
@@ -222,3 +222,5 @@ Country data object not returns from onKeyDown event
 Based on [react-phone-input-2](https://github.com/bl00mber/react-phone-input-2)
 
 Based on [react-phone-input](https://github.com/razagill/react-phone-input) using [MIT](https://opensource.org/licenses/MIT)
+
+Based on [material-ui-phone-number](https://github.com/alexplumb/material-ui-phone-number)
