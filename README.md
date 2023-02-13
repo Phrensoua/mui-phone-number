@@ -1,4 +1,7 @@
 # mui-phone-number
+
+> **_NOTE:_**  I started this library because material-ui-phone-number took some time to upgrade to Material-ui v5. Now that some people are using this library, I feel like I should keep it up even if material-ui-phone-number has done a great job at upgrading and maintaning its library. I suggest you switch to material-ui-phone-number or if you feel like helping me maintaining this lib, let me know!. Thanks.
+
 Highly customizable phone input component with auto formatting. Based on the wonderful [react-phone-input-2](https://github.com/bl00mber/react-phone-input-2) package.
 
 It looks like this, but in Material Design:
@@ -221,6 +224,6 @@ Country data object not returns from onKeyDown event
 
 Based on [react-phone-input-2](https://github.com/bl00mber/react-phone-input-2)
 
-Based on [react-phone-input](https://github.com/razagill/react-phone-input) using [MIT](https://opensource.org/licenses/MIT)
+Based on [react-phone-input](https://github.com/razagill/react-phone-input) using [MIT](https://opensource.org/licenses/MIT)\
 
 Based on [material-ui-phone-number](https://github.com/alexplumb/material-ui-phone-number)

@@ -16,8 +16,12 @@ class ChangeDemo extends React.Component {
 
     return (
       <div>
-        Current number: {number}
+        Current number:
+        {' '}
+        {number}
+
         <br />
+
         <MaterialUiPhoneNumber
           defaultCountry="it"
           preferredCountries={['it', 'se']}
@@ -40,7 +44,10 @@ export default render(
         excludeCountries={['us', 'ca']}
       />
       <p>Only countries</p>
-      <MaterialUiPhoneNumber defaultCountry="gb" onlyCountries={['gb', 'es']} />
+      <MaterialUiPhoneNumber
+        defaultCountry="gb"
+        onlyCountries={['gb', 'es']}
+      />
       <p>Preferred countries</p>
       <MaterialUiPhoneNumber
         defaultCountry="it"
@@ -59,24 +66,36 @@ export default render(
     <div style={{ display: 'inline-block', marginLeft: '40px' }}>
       <p>v2</p>
       <p>Auto country detect by value</p>
-      <MaterialUiPhoneNumber value="+3802343252" />
+      <MaterialUiPhoneNumber
+        value="+3802343252"
+      />
       <p>Disabled area codes with disableAreaCodes</p>
-      <MaterialUiPhoneNumber defaultCountry="us" disableAreaCodes />
+      <MaterialUiPhoneNumber
+        defaultCountry="us"
+        disableAreaCodes
+      />
       <p>Disabled flag by default</p>
       <p>Customizable placeholder</p>
     </div>
 
-    <div
-      style={{
-        display: 'inline-block',
-        marginLeft: '40px',
-        verticalAlign: 'top',
-        marginTop: '35px',
-      }}
+    <div style={{
+      display: 'inline-block', marginLeft: '40px', verticalAlign: 'top', marginTop: '35px',
+    }}
     >
-      <p>Custom region selected: {"{'europe'}"}</p>
-      <MaterialUiPhoneNumber defaultCountry="it" regions="europe" />
-      <p>Custom regions selected: {"{['north-america', 'carribean']}"}</p>
+      <p>
+        Custom region selected:
+        {' '}
+        {'{\'europe\'}'}
+      </p>
+      <MaterialUiPhoneNumber
+        defaultCountry="it"
+        regions="europe"
+      />
+      <p>
+        Custom regions selected:
+        {' '}
+        {'{[\'north-america\', \'carribean\']}'}
+      </p>
       <MaterialUiPhoneNumber
         defaultCountry="ca"
         regions={['north-america', 'carribean']}
@@ -99,5 +118,5 @@ export default render(
       />
     </div>
   </div>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
