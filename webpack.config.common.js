@@ -5,7 +5,7 @@ const ROOT_PATH = path.resolve(__dirname);
 // Common configuration settings
 module.exports = {
   entry: {
-    'mui-phone-number': path.resolve(ROOT_PATH, 'src/index.js'),
+    'mui-phone-number': path.resolve(ROOT_PATH, './src/index.js'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
