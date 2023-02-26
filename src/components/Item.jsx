@@ -8,7 +8,7 @@ class Item extends React.PureComponent {
     const ref = React.createRef();
     const {
       name, iso2, dialCode, localization,
-      itemRef, native, className = '', ...restProps
+      itemRef, native, ...restProps
     } = this.props;
 
     if (native) {
@@ -38,7 +38,10 @@ class Item extends React.PureComponent {
         {...restProps}
       >
         {Boolean(FlagComponent) && (
-          <div className={className}>
+          <div
+            className={restProps.className}
+            style={{ width: 30, height: 24, paddingRight: 8 }}
+          >
             <FlagComponent />
           </div>
         )}
