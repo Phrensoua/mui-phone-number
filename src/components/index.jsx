@@ -677,7 +677,7 @@ class MaterialUiPhoneNumber extends React.Component {
                       iso2={country.iso2}
                       dialCode={country.dialCode}
                       localization={localization && localization[country.name]}
-                      // style={styles.flagIcon}
+                      style={styles.flagIcon}
                     />
                   ))}
 
