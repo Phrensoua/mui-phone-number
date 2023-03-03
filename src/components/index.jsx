@@ -1,6 +1,7 @@
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Flags from 'country-flag-icons/react/3x2'
+import Flags from 'country-flag-icons/react/3x2';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
@@ -44,9 +45,7 @@ class MaterialUiPhoneNumber extends React.Component {
     if (props.disableAreaCodes) filteredCountries = this.deleteAreaCodes(filteredCountries);
     if (props.regions) filteredCountries = this.filterRegions(props.regions, filteredCountries);
 
-    const onlyCountries = this.excludeCountries(
-      this.getOnlyCountries(props.onlyCountries, filteredCountries), props.excludeCountries,
-    );
+    const onlyCountries = this.excludeCountries(this.getOnlyCountries(props.onlyCountries, filteredCountries), props.excludeCountries);
 
     const preferredCountries = filter(filteredCountries, (country) => some(props.preferredCountries, (preferredCountry) => preferredCountry === country.iso2));
 
@@ -133,14 +132,14 @@ class MaterialUiPhoneNumber extends React.Component {
     if (onlyCountriesArray.length === 0) return filteredCountries;
 
     return filteredCountries.filter((country) => onlyCountriesArray.some((element) => element === country.iso2));
-  }
+  };
 
   excludeCountries = (selectedCountries, excludedCountries) => {
     if (excludedCountries.length === 0) {
       return selectedCountries;
     }
     return filter(selectedCountries, (selCountry) => !includes(excludedCountries, selCountry.iso2));
-  }
+  };
 
   filterRegions = (regions, filteredCountries) => {
     if (typeof regions === 'string') {
@@ -152,7 +151,7 @@ class MaterialUiPhoneNumber extends React.Component {
       const matches = regions.map((region) => country.regions.some((element) => element === region));
       return matches.some((el) => el);
     });
-  }
+  };
 
   // Countries array methods
   deleteAreaCodes = (filteredCountries) => filteredCountries.filter((country) => country.isAreaCode !== true);
@@ -169,7 +168,7 @@ class MaterialUiPhoneNumber extends React.Component {
       selectedCountry: newSelectedCountry,
       formattedNumber: disableCountryCode ? '' : `+${newSelectedCountry.dialCode}`,
     });
-  }
+  };
 
   // View methods
   scrollTo = (country) => {
@@ -179,7 +178,7 @@ class MaterialUiPhoneNumber extends React.Component {
 
     if (!container || !document.body) { return; }
     container.scrollTop = country.offsetTop;
-  }
+  };
 
   formatNumber = (text, patternArg) => {
     const { disableCountryCode, enableLongNumbers, autoFormat } = this.props;
@@ -234,7 +233,7 @@ class MaterialUiPhoneNumber extends React.Component {
     // Always close brackets
     if (formattedNumber.includes('(') && !formattedNumber.includes(')')) formattedNumber += ')';
     return formattedNumber;
-  }
+  };
 
   // Put the cursor to the end of the input (usually after a focus event)
   cursorToEnd = () => {
@@ -248,9 +247,9 @@ class MaterialUiPhoneNumber extends React.Component {
         input.setSelectionRange(len, len);
       }
     }
-  }
+  };
 
-  getElement = (index) => this.flags[`flag_no_${index}`]
+  getElement = (index) => this.flags[`flag_no_${index}`];
 
   // return country data from state
   getCountryData = () => {
@@ -263,7 +262,7 @@ class MaterialUiPhoneNumber extends React.Component {
       dialCode: selectedCountry.dialCode || '',
       countryCode: selectedCountry.iso2 || '',
     };
-  }
+  };
 
   handleInput = (e) => {
     let { selectedCountry: newSelectedCountry, freezeSelection } = this.state;
@@ -343,7 +342,7 @@ class MaterialUiPhoneNumber extends React.Component {
         onChange(formattedNumber, this.getCountryData());
       }
     });
-  }
+  };
 
   handleRefInput = (ref) => {
     const { inputRef, InputProps } = this.props;
@@ -372,7 +371,7 @@ class MaterialUiPhoneNumber extends React.Component {
     if (onClick) {
       onClick(e, this.getCountryData());
     }
-  }
+  };
 
   handleFlagItemClick = (country) => {
     const { formattedNumber, selectedCountry, onlyCountries } = this.state;
@@ -397,7 +396,7 @@ class MaterialUiPhoneNumber extends React.Component {
         onChange(newFormattedNumber, this.getCountryData());
       }
     });
-  }
+  };
 
   handleInputFocus = (e) => {
     const { selectedCountry } = this.state;
@@ -419,7 +418,7 @@ class MaterialUiPhoneNumber extends React.Component {
     }
 
     setTimeout(this.cursorToEnd, 10);
-  }
+  };
 
   handleInputBlur = (e) => {
     const { placeholder, onBlur } = this.props;
@@ -431,7 +430,7 @@ class MaterialUiPhoneNumber extends React.Component {
     if (onBlur) {
       onBlur(e, this.getCountryData());
     }
-  }
+  };
 
   getHighlightCountryIndex = (direction) => {
     const { highlightCountryIndex: oldHighlightCountryIndex, onlyCountries, preferredCountries } = this.state;
@@ -444,7 +443,7 @@ class MaterialUiPhoneNumber extends React.Component {
     }
 
     return highlightCountryIndex;
-  }
+  };
 
   searchCountry = () => {
     const { queryString, onlyCountries, preferredCountries } = this.state;
@@ -455,7 +454,7 @@ class MaterialUiPhoneNumber extends React.Component {
     this.scrollTo(this.getElement(probableCandidateIndex), true);
 
     this.setState({ queryString: '', highlightCountryIndex: probableCandidateIndex });
-  }
+  };
 
   handleKeydown = (e) => {
     const {
@@ -505,7 +504,7 @@ class MaterialUiPhoneNumber extends React.Component {
           }, debouncedQueryStingSearcher);
         }
     }
-  }
+  };
 
   handleInputKeyDown = (e) => {
     const { keys, onEnterKeyPress, onKeyDown } = this.props;
@@ -516,7 +515,7 @@ class MaterialUiPhoneNumber extends React.Component {
     if (onKeyDown) {
       onKeyDown(e);
     }
-  }
+  };
 
   checkIfValid = () => {
     const { formattedNumber } = this.state;
@@ -555,7 +554,7 @@ class MaterialUiPhoneNumber extends React.Component {
     const {
       selectedCountry, anchorEl, preferredCountries, onlyCountries,
     } = this.state;
-    
+
     const styles = {
       flagButton: {
         minWidth: 30,
@@ -584,7 +583,7 @@ class MaterialUiPhoneNumber extends React.Component {
     };
 
     const {
-      classes, dropdownClass, localization, disableDropdown,
+      dropdownClass, localization, disableDropdown,
       native,
     } = this.props;
 
@@ -605,49 +604,47 @@ class MaterialUiPhoneNumber extends React.Component {
           position="start"
         >
           {native ? (
-            <>
-              <NativeSelect
-                id="country-menu"
-                open={Boolean(anchorEl)}
-                onClose={() => this.setState({ anchorEl: null })}
-                style={styles.native}
-                sx={{
-                  root: styles.nativeRoot, // clsx(classes.nativeRoot, 'native'),
-                  select: styles.nativeSelect,
-                }}
-                onChange={(e) => this.handleFlagItemClick(e.target.value)}
-                IconComponent={Boolean(FlagComponent) && FlagComponent}
-                disableUnderline
-              >
-                {!!preferredCountries.length && map(preferredCountries, (country, index) => (
-                  <Item
-                    key={`preferred_${country.iso2}_${index}`}
-                    itemRef={(node) => {
-                      this.flags[`flag_no_${index}`] = node;
-                    }}
-                    name={country.name}
-                    iso2={country.iso2}
-                    dialCode={country.dialCode}
-                    localization={localization && localization[country.name]}
-                    native
-                  />
-                ))}
+            <NativeSelect
+              id="country-menu"
+              open={Boolean(anchorEl)}
+              onClose={() => this.setState({ anchorEl: null })}
+              style={styles.native}
+              sx={{
+                root: styles.nativeRoot, // clsx(classes.nativeRoot, 'native'),
+                select: styles.nativeSelect,
+              }}
+              onChange={(e) => this.handleFlagItemClick(e.target.value)}
+              IconComponent={Boolean(FlagComponent) && FlagComponent}
+              disableUnderline
+            >
+              {!!preferredCountries.length && map(preferredCountries, (country, index) => (
+                <Item
+                  key={`preferred_${country.iso2}_${index}`}
+                  itemRef={(node) => {
+                    this.flags[`flag_no_${index}`] = node;
+                  }}
+                  name={country.name}
+                  iso2={country.iso2}
+                  dialCode={country.dialCode}
+                  localization={localization && localization[country.name]}
+                  native
+                />
+              ))}
 
-                {map(onlyCountries, (country, index) => (
-                  <Item
-                    key={`preferred_${country.iso2}_${index}`}
-                    itemRef={(node) => {
-                      this.flags[`flag_no_${index}`] = node;
-                    }}
-                    name={country.name}
-                    iso2={country.iso2}
-                    dialCode={country.dialCode}
-                    localization={localization && localization[country.name]}
-                    native
-                  />
-                ))}
-              </NativeSelect>
-            </>
+              {map(onlyCountries, (country, index) => (
+                <Item
+                  key={`preferred_${country.iso2}_${index}`}
+                  itemRef={(node) => {
+                    this.flags[`flag_no_${index}`] = node;
+                  }}
+                  name={country.name}
+                  iso2={country.iso2}
+                  dialCode={country.dialCode}
+                  localization={localization && localization[country.name]}
+                  native
+                />
+              ))}
+            </NativeSelect>
           )
             : (
               <>

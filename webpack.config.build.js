@@ -2,6 +2,10 @@ const webpack = require('webpack');
 const { merge } = require('webpack-merge');
 const common = require('./webpack.config.common');
 
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
 module.exports = merge(common, {
   mode: 'production',
   externals: [
@@ -29,7 +33,25 @@ module.exports = merge(common, {
     /@mui\/material\/*./,
     'clsx',
   ],
+  module: {
+    rules: [
+      {
+        test: /.s?css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+    ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin({
+        parallel: 2,
+      }),
+    ],
+  },
   plugins: [
+    new MiniCssExtractPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
