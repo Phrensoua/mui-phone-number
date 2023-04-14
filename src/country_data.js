@@ -710,7 +710,7 @@ const rawAllCountries = [
   [
     'Kosovo',
     ['europe'],
-    'ks',
+    'xk',
     '383',
   ],
   [
